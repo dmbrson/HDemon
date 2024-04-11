@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <title>{% block title %} {% endblock%}</title>
+</head>
+
+<body>
+    <header class = "header">
+    <a href = "{% url 'home' %}">
+        <img src="{% static 'main/img/logo.png' %}" class = "logo">
+    </a>
+    <nav>
+        <ul class = "menu">
+            <li><a href = "#">Поисковая строка</a></li>
+            <li><a href = "#">Войти</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main>
+    {% block content %}
+    {% endblock%}
+    </main>
+    <footer>
+        <p>© 2003–2024 Кинопоиск. 18+
+            Федеральные каналы доступны для бесплатного просмотра круглосуточно
+            HBO ® and related service marks are the property of Home Box Office, Inc
+            ООО «Кинопоиск», адрес местонахождения: 115035, Россия, г. Москва, ул. Садовническая, д. 82, стр. 2, пом. 9А01
+        </p>
+    </footer>
+</body>
+</html>
