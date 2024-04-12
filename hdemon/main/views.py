@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import *
 def index(request):
-    return render(request,  'main/index.html')
+    posts = Films.objects.all()
+    return render(request,  'main/index.html', {'posts': posts})
 def about(request):
     return render(request,  'main/about.html')

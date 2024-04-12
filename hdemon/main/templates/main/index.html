@@ -5,7 +5,18 @@
 {% block content %}
 <div class="featers">
     <h1>Сериалы</h1>
+
     <h1>Фильмы</h1>
+    <ul>
+        {% for p in posts %}
+        <li>
+            <h2>{{p.title}}</h2>
+            <p>{{p.content}}</p>
+            <hr>
+        </li>
+        {% endfor %}
+    </ul>
+
     <h1>Порно</h1>
 </div>
 {% endblock %}
