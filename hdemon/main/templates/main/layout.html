@@ -25,9 +25,9 @@
 
 <!--            это ваще пиздец ебанутый-->
             {% if selected == 0 %}
-                <li class="selected">Все категории</li>
+                <li class="selected">Жанры</li>
             {% else %}
-                <li><a href="{% url 'home' %}">Все категории</a></li>
+                <li><a href="{% url 'home' %}">Жанры</a></li>
             {% endif %}
 
             {% for c in cats %}
