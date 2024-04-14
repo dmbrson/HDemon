@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from .models import *
 def index(request):
@@ -28,6 +28,7 @@ def show_category(request, cat_id):
         'cat_selected': cat_id,
     }
 
-    return render(request,  'main/index.html', context=context)
+    if len(films) == 0:
+        raise Http404()
 
-    return HttpResponse(f"Отображение жанра с id = {cat_id}")
+    return render(request,  'main/index.html', context=context)
