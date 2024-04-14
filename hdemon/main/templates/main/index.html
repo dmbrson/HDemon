@@ -4,14 +4,16 @@
 
 {% block content %}
 <div class="featers">
-    <h1>Сериалы</h1>
-
     <h1>Фильмы</h1>
     <ul>
-        {% for p in posts %}
+        {% for p in films %}
         <li>
+<!--            {% autoescape off %}-->
             <h2>{{p.title}}</h2>
-            <p>{{p.content}}</p>
+<!--            {% endautoescape off %}-->
+            <p>{{p.content|linebreaks}}</p>
+            <div class="clear"></div>
+            <p class="cancel-link"> <a href="{{ p.get_absolute_url }}">Смотреть</a></p>
             <hr>
         </li>
         {% endfor %}

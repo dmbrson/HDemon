@@ -17,12 +17,28 @@
     </a>
     <nav>
         <ul class = "menu">
-            <li><a href = "#"><img src="../../static/main/img/home.png" alt="test image"></a></li>
-            <li><a href = "#"><img src="../../static/main/img/profile.png" alt="test image"></a></li>
-            <li><a href = "#"><img src="../../static/main/img/liked.png" alt="test image"></a></li>
-            <li><a href = "#"><img src="../../static/main/img/search.png" alt="test image"></a></li>
-            <li><a href = "#"><img src="../../static/main/img/contact.png" alt="test image"></a></li>
-            <li><a href = "#"><img id="logout" src="../../static/main/img/logout.png" alt="test image"></a></li>
+            <li><a href = "#"><img src="{% static 'main/img/home.png' %}" alt="test image"></a></li>
+            <li><a href = "#"><img src="{% static 'main/img/profile.png' %}" alt="test image"></a></li>
+            <li><a href = "#"><img src="{% static 'main/img/liked.png' %}" alt="test image"></a></li>
+            <li><a href = "#"><img src="{% static 'main/img/search.png' %}" alt="test image"></a></li>
+            <li><a href = "#"><img src="{% static 'main/img/contact.png' %}" alt="test image"></a></li>
+
+<!--            это ваще пиздец ебанутый-->
+            {% if selected == 0 %}
+                <li class="selected">Все категории</li>
+            {% else %}
+                <li><a href="{% url 'home' %}">Все категории</a></li>
+            {% endif %}
+
+            {% for c in cats %}
+                {% if c.pk == cat_selected %}
+                    <li class="selected">{{c.name}}</li>
+                {% else %}
+                    <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            <li><a href = "#"><img id="logout" src="{% static 'main/img/logout.png' %}" alt="test image"></a></li>
         </ul>
     </nav>
     </header>

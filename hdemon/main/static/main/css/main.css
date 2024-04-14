@@ -35,7 +35,7 @@ body {
     width: 130px;
     height: 100vh;
     background-color: #1f2226;
-    z-index: 999;
+    z-index: 1;
 }
 
 .menu img {
