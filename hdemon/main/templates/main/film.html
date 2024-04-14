@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{film.title}}{% endblock %}
+
+{% block content %}
+    <h1>{{film.title}}</h1>
+    <h3>{{film.cat}}</h3>
+    {% if film.photo %}
+        <img src="{{film.photo.url}}">
+    {% endif %}
+    <hr>
+    {{film.actors}}
+    <hr>
+    {{film.year}}
+    <hr>
+    {{film.content|linebreaks}}
+{% endblock %}
