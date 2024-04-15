@@ -29,34 +29,7 @@
             <li><a href = "#"><img id="logout" src="{% static 'main/img/logout.png' %}" alt="test image"></a></li>
         </ul>
     </nav>
-    <div>
-        <ul class="categories">
-             {% if request.path == "/"%}
-                <li><a class="selected" href="{% url 'home' %}">
-                    <img src="{% static 'main/img/Всё.png' %}" alt="test image">Всё
-                </a></li>
-            {% else %}
-                <li><a href="{% url 'home' %}">
-                    <img src="{% static 'main/img/Всё.png' %}" alt="test image">Всё</a>
-                </li>
-            {% endif %}
 
-            {% for c in cats %}
-                {% if c.pk == cat_selected %}
-                    <li><a class="selected" href="{{ c.get_absolute_url }}">
-                        <img class="cat_img" src="{% static 'main/img/' %}{{c.name}}.png">{{c.name}}
-                    </a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a href="{{ c.get_absolute_url }}">
-                            <img class="cat_img" src="{% static 'main/img/' %}{{c.name}}.png">{{c.name}}
-                        </a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
     </header>
 
     <main>
