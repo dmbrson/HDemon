@@ -2,7 +2,8 @@
     margin: 0px;
     padding: 0;
     box-sizing: revert;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
 }
 
 body {
@@ -15,15 +16,18 @@ body {
     padding: 20px;
 }
 
-.header {
+.logo {
+    position: fixed;
+    top: 40px;
+    left: 150px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 1px;
-    box-sizing: border-box;
-    max-width: 1300px;
-    margin: 0 auto;
-    z-index: 1;
+}
+
+.logo img {
+    margin-top: -10px;
+    margin-right: 10px;
+    width: 40px;
 }
 
 .menu {
@@ -58,8 +62,43 @@ li {
     list-style-type: none;
 }
 
-.logo {
-    width: 70px;
+.categories {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 100px;
+}
+
+.categories li {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.categories li a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #282b30;
+    color: blanchedalmond;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 120px;
+    transition: background-color 0.2s ease;
+}
+
+.categories li a:hover {
+    background-color: #ff0000;
+}
+
+.categories li a.selected {
+    background-color: #ff0000;
+}
+
+.categories li img {
+    height: 1em;
+    padding: 0 7px;
+
 }
 
 main .featers {
