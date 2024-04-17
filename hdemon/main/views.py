@@ -1,5 +1,10 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, CreateView
+
+from .forms import *
 from .models import *
 def index(request):
     films = Films.objects.all()
@@ -16,6 +21,19 @@ def about(request):
     return render(request,  'main/about.html')
 def login(request):
     return render(request,  'main/login.html')
+def add_film(request):
+    if request.method == 'POST':
+        form = AddFilmForm(request.POST, request.FILES)
+        if form.is_valid():
+            #print(form.cleaned_data)
+            try:
+                Films.objects.create(**form.cleaned_data)
+                return redirect('home')
+            except:
+                form.add_error(None, 'Ошибка')
+    else:
+        form = AddFilmForm()
+    return render(request,  'main/addpage.html', {'form': form})
 def show_film(request, film_id):
     film = get_object_or_404(Films, id=film_id)
 
