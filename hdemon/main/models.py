@@ -3,6 +3,7 @@ from django.urls import reverse
 
 class Films(models.Model):
     title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     content = models.TextField(blank=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d')
     time_created = models.DateTimeField(auto_now_add=True)
@@ -10,7 +11,7 @@ class Films(models.Model):
     director = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     actors = models.TextField(blank=True)
-    cat = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
+    cat = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     class  Meta:
         verbose_name_plural = 'Фильмы'
@@ -23,6 +24,8 @@ class Films(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+
 
     class  Meta:
         verbose_name_plural = 'Жанры'
