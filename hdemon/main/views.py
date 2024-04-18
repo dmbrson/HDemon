@@ -17,17 +17,17 @@ class FilmsHome(ListView):
         context['cats'] = Category.objects.all()
         context['cat_selected'] = 0
         return context
-def index(request):
-    films = Films.objects.all()
-    cats = Category.objects.all()
+# def index(request):
+#     films = Films.objects.all()
+#     cats = Category.objects.all()
+#
+#     context = {
+#         'films': films,
+#         'cats': cats,
+#         'cat_selected': 0,
+#     }
 
-    context = {
-        'films': films,
-        'cats': cats,
-        'cat_selected': 0,
-    }
-
-    return render(request,  'main/index.html', context=context)
+    # return render(request,  'main/index.html', context=context)
 def about(request):
     return render(request,  'main/about.html')
 def login(request):
@@ -60,23 +60,20 @@ class ShowFilm(DetailView):
     model = Films
     template_name = 'main/film.html'
     context_object_name = 'film'
-    pk_url_kwarg = 'film_id'
+    slug_field = 'slug'
 
 class CategoryFilms(ListView):
+    model = Films
     template_name = 'main/index.html'
     context_object_name = 'films'
+    allow_empty = False
 
     def get_queryset(self):
-        cat_id = self.kwargs['cat_id']
-        films = Films.objects.filter(cat_id=cat_id)
-        if not films:
-            raise Http404("Нет фильмов такого жанра")
-        return films
-
-    def get_context_data(self, **kwargs):
+        return Films.objects.filter(cat__slug=self.kwargs['cat_slug'])
+    def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cats'] = Category.objects.all()
-        context['cat_selected'] = self.kwargs['cat_id']
+        context['cat_selected'] = self.kwargs['cat_slug']
         return context
 
 # def show_category(request, cat_id):

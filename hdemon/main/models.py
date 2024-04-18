@@ -20,7 +20,7 @@ class Films(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('film', kwargs={'film_id': self.pk})
+        return reverse('film', kwargs={'slug': self.slug})
 
 class Category(models.Model):
     name = models.CharField(max_length=255, db_index=True)
@@ -33,4 +33,4 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'cat_id': self.pk})
+        return reverse('category', kwargs={'cat_slug': self.slug})
