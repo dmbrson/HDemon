@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, ListView, UpdateView, DeleteView
+from .utils import *
 from .forms import *
 from .models import *
 
@@ -30,8 +32,8 @@ class FilmsHome(ListView):
     # return render(request,  'main/index.html', context=context)
 def about(request):
     return render(request,  'main/about.html')
-def login(request):
-    return render(request,  'main/login.html')
+# def login(request):
+#     return render(request,  'main/login.html')
 # def add_film(request):
 #     if request.method == 'POST':
 #         form = AddFilmForm(request.POST, request.FILES)
@@ -99,11 +101,19 @@ class CategoryFilms(ListView):
 #
 #     return render(request,  'main/index.html', context=context)
 
-# class RegisterUser(CreateView):
-#     form_class = UserCreationForm
-#     template_name = 'main/register.html'
-#     success_url = reverse_lazy('login')
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return dict(list(context.items()))
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'main/register.html'
+    success_url = reverse_lazy('login')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return dict(list(context.items()))
+
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'main/login.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return dict(list(context.items()))
