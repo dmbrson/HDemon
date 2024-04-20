@@ -18,7 +18,11 @@
     <div class="logo">
         <img src="{% static 'main/img/logo.png' %}">
         <h1>HDemon</h1>
-        <a href="{% url 'register' %}">Регистрация</a> /\ <a href="{% url 'login' %}">Войти</a>
+        {% if request.user.is_authenticated %}
+            <h3>{{user.username}}<h3>
+        {% else %}
+            <a href="{% url 'register' %}">Регистрация</a> /\ <a href="{% url 'aboba' %}">Войти</a>
+        {% endif %}
     </div>
 
     <nav>
@@ -27,8 +31,12 @@
             <li><a href = "#"><img src="{% static 'main/img/profile.png' %}" alt="test image"></a></li>
             <li><a href = "#"><img src="{% static 'main/img/liked.png' %}" alt="test image"></a></li>
             <li><a href = "#"><img src="{% static 'main/img/search.png' %}" alt="test image"></a></li>
-            <li><a href = "#"><img src="{% static 'main/img/contact.png' %}" alt="test image"></a></li>
-            <li><a href = "#"><img id="logout" src="{% static 'main/img/logout.png' %}" alt="test image"></a></li>
+            {% if request.user.is_superuser %}
+                <li><a href = "{% url 'addpage' %}"><img src="{% static 'main/img/contact.png' %}" alt="test image"></a></li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <li><a href = "{% url 'neaboba' %}"><img id="logout" src="{% static 'main/img/logout.png' %}" alt="test image"></a></li>
+            {% endif %}
         </ul>
     </nav>
 
@@ -39,10 +47,7 @@
     {% endblock%}
     </main>
     <footer>
-        <p>© 2003–2024 Кинопоиск. 18+
-            Федеральные каналы доступны для бесплатного просмотра круглосуточно
-            HBO ® and related service marks are the property of Home Box Office, Inc
-            ООО «Кинопоиск», адрес местонахождения: 115035, Россия, г. Москва, ул. Садовническая, д. 82, стр. 2, пом. 9А01
+        <p>
         </p>
     </footer>
 </body>
