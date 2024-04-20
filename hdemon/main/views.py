@@ -32,19 +32,27 @@ def about(request):
     return render(request,  'main/about.html')
 def login(request):
     return render(request,  'main/login.html')
-def add_film(request):
-    if request.method == 'POST':
-        form = AddFilmForm(request.POST, request.FILES)
-        if form.is_valid():
-            #print(form.cleaned_data)
-            try:
-                Films.objects.create(**form.cleaned_data)
-                return redirect('home')
-            except:
-                form.add_error(None, 'Ошибка')
-    else:
-        form = AddFilmForm()
-    return render(request,  'main/addpage.html', {'form': form})
+# def add_film(request):
+#     if request.method == 'POST':
+#         form = AddFilmForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             #print(form.cleaned_data)
+#             try:
+#                 Films.objects.create(**form.cleaned_data)
+#                 return redirect('home')
+#             except:
+#                 form.add_error(None, 'Ошибка')
+#     else:
+#         form = AddFilmForm()
+#     return render(request,  'main/addpage.html', {'form': form})
+
+class AddPage(CreateView):
+    form_class = AddFilmForm
+    template_name = 'main/addpage.html'
+    success_url = reverse_lazy('home')
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 # def show_film(request, film_id):
 #     film = get_object_or_404(Films, id=film_id)
