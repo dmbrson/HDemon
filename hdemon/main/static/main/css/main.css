@@ -108,3 +108,61 @@ main .featers h1{
     font-size: 50px;
     font-weight: 700;
 }
+
+.centered-content {
+    position: static;
+    text-align: center;
+}
+
+.centered-content h1 {
+    margin-bottom: 50px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 200px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 17px;
+    display: inline-block;
+    min-width: 150px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.form-error ul {
+    list-style: none;
+    padding: 0;
+    color: #CC0000;
+}
+
+.form-button {
+    min-width: 200px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    padding: 10px 35px;
+    font-size: 20px;
+    border: none;
+    background-color: #0e8316;
+    color: blanchedalmond;
+    border-radius: 5px;
+    transition:  0.3s ease;
+
+}
+
+button[type="submit"]:hover {
+    background-color: #154017;
+    color: #685951;
+}
+
+.centered-content-addpage {
+    position: static;
+    margin-top: 40px
+}
