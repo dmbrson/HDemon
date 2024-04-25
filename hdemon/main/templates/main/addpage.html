@@ -1,0 +1,11 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}О нас{% endblock %}
+
+{% block content %}
+    <form action="{% url 'addpage' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Добавить</button>>
+    </form>
+{% endblock %}

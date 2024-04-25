@@ -1,0 +1,110 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: revert;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+body {
+    max-width: calc(100% - 130px);
+    margin-left: 130px;
+    background: #1d2024;
+    color: blanchedalmond;
+    line-height: 1.5;
+    font-size: 1rem;
+    padding: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    margin-top: -10px;
+    margin-right: 10px;
+    width: 40px;
+}
+
+.menu {
+    display: block;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 130px;
+    height: 100vh;
+    background-color: #1f2226;
+    z-index: 1;
+}
+
+.menu img {
+    display: block;
+    width: 30px;
+    margin: 50px auto 0px;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+#logout {
+    margin: 50vh auto;
+}
+
+.menu img:hover {
+    filter: brightness(1000%);
+}
+
+li {
+    list-style-type: none;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.categories li {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.categories li a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #282b30;
+    color: blanchedalmond;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 120px;
+    transition: background-color 0.2s ease;
+}
+
+.categories li a:hover {
+    background-color: #ff0000;
+}
+
+.categories li a.selected {
+    background-color: #ff0000;
+}
+
+.categories li img {
+    height: 1em;
+    padding: 0 7px;
+
+}
+
+main .featers {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+main .featers h1{
+    font-size: 50px;
+    font-weight: 700;
+}
