@@ -127,4 +127,4 @@ class LoginUser(LoginView):
 
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    return redirect('aboba')
