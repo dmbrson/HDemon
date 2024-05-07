@@ -7,7 +7,7 @@ from .models import *
 class AddFilmForm(forms.ModelForm):
     class Meta:
         model = Films
-        fields = ['title', 'slug', 'content', 'photo', 'year', 'director', 'country', 'actors', 'cat']
+        fields = ['title', 'slug', 'content', 'photo', 'year', 'director', 'country', 'actors', 'link', 'cat']
         labels = {
             'title': 'Название фильма',
             'slug': 'slug',
@@ -16,6 +16,7 @@ class AddFilmForm(forms.ModelForm):
             'director': 'Режиссер',
             'country': 'Страна',
             'actors': 'Актёры',
+            'link': 'Трейлер',
             'cat': 'Жанр',
         }
         widgets = {

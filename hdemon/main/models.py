@@ -11,6 +11,7 @@ class Films(models.Model):
     director = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     actors = models.TextField(blank=True)
+    link = models.URLField(max_length=200, blank=True, null=True)
     cat = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     class  Meta:

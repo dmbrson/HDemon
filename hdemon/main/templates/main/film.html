@@ -6,15 +6,14 @@
     <div class="film_title">
         <h1>{{film.title}}</h1>
         <div class="under_title">
-            {# {{film.original_title}} #}Interstellar  &middot  {# {{film.age_limit}} #} 18+  &middot  {# {{ film.length }} #} 3h 45m
+           {# {{film.original_title}} #}  Interstellar  &middot  {# {{film.age_limit}} #} 18+  &middot  {# {{ film.length }} #} 3h 45m
         </div>
     </div>
     <div class="trailer_container">
         {% if film.photo %}
             <img src="{{film.photo.url}}">
         {% endif %}
-        {# {{film.trailer}} #}
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/zSWdZVtXT7E?si=I6FdLx78f5jKHbzI"
+        <iframe width="560" height="315" src= {{ film.link }}
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -23,9 +22,10 @@
     <div class="film_info">
         <p id="film_description">{{film.content}}</p>
         <ul>
-            <li>Режиссёр: Лох Опущенный{# {{ film.director }} #}</li>
+            <li>Режиссёр:  {{ film.director }}</li>
             <li>В ролях: {{film.actors}}</li>
             <li>Год выпуска: {{film.year}}</li>
+            <li>Страна: {{ film.country }}</li>
         </ul>
     </div>
 {% endblock %}
